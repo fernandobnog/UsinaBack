@@ -1,0 +1,20 @@
+CREATE TABLE USINAS (
+id NUMBER(10) NULL,
+nome VARCHAR2(50) NULL,
+capacidadeEnergetica NUMBER NULL,
+tipo VARCHAR2(50) NULL,
+status NUMBER(1) NULL);
+
+
+INSERT INTO usinas (ID, nome,capacidadeenergetica, tipo, status)
+VALUES (1, 'itaipu', 14000, 'hidreletrica', 1);
+INSERT INTO usinas (ID, nome,capacidadeenergetica, tipo, status)
+VALUES (2, 'Belo Monte', 11233, 'hidreletrica', 1);
+INSERT INTO usinas (ID, nome,capacidadeenergetica, tipo, status)
+VALUES (3, 'São Luiz do Tapajós', 8381, 'hidreletrica', 1);
+INSERT INTO usinas (ID, nome,capacidadeenergetica, tipo, status)
+VALUES (4, 'Tucuruí ', 8370, 'hidreletrica', 1);
+INSERT INTO usinas (ID, nome,capacidadeenergetica, tipo, status)
+VALUES (5, 'Andgra dos Reis ', 2007, 'nuclear', 1);
+INSERT INTO usinas (ID, nome,capacidadeenergetica, tipo, status)
+VALUES (6, 'Nordeste', 40000 , 'termoeletrica', 1);
