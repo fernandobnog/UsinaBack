@@ -22,8 +22,8 @@ public class UsinasDao {
 		validar(u, true);
 		String sqlInsert = "INSERT INTO USINAS (id, nome, capacidadeEnergetica, tipo, status) VALUES(?, ?, ?, ?, ?)";
 
-		try(Connection con = jdbcTemplate.getDataSource().getConnection();
-			PreparedStatement ps = con.prepareStatement(sqlInsert)){
+		try (Connection con = jdbcTemplate.getDataSource().getConnection();
+			 PreparedStatement ps = con.prepareStatement(sqlInsert)) {
 			ps.setInt(1, u.getId());
 			ps.setString(2, u.getNome());
 			ps.setInt(3, u.getCapacidadeEnergetica());
@@ -38,7 +38,6 @@ public class UsinasDao {
 			throw new Exception("Erro ao inserir no banco.");
 		}
 	}
-
 
 
 	private void validar(Usinas u, boolean incluir) throws Exception {
@@ -61,8 +60,8 @@ public class UsinasDao {
 
 	public List<Usinas> listar() {
 		List<Usinas> lista = new ArrayList<>();
-		try(Connection con = jdbcTemplate.getDataSource().getConnection();
-			Statement stmt = con.createStatement()){
+		try (Connection con = jdbcTemplate.getDataSource().getConnection();
+			 Statement stmt = con.createStatement()) {
 			String sql = "SELECT * FROM USINAS";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
@@ -86,4 +85,34 @@ public class UsinasDao {
 		}
 		return lista;
 	}
+
+	public Usinas alterar(Usinas u) throws Exception {
+
+		String sqlUpdate = "UPDATE FROM USINAS (id, nome, capacidadeEnergetica, tipo, status) WHERE ID=?";
+
+		try (Connection con = jdbcTemplate.getDataSource().getConnection();
+			 PreparedStatement ps = con.prepareStatement(sqlUpdate)) {
+			ps.setInt(1, u.getId());
+
+			int result = ps.executeUpdate();
+			if (result == 1) {
+				System.out.println("Usina alterada com sucesso:" + u.getNome());
+				return u;
+			}
+			throw new Exception("Erro ao alterar no banco.");
+		}
+
+
+	}
+	public boolean excluir(Usinas u) throws Exception{
+		String sql = "DELETE FROM USINAS WHERE ID=?";
+
+		try(Connection con = jdbcTemplate.getDataSource().getConnection();
+			PreparedStatement ps = con.prepareStatement(sql)){
+			ps.setInt(1, u.getId());
+			return ps.executeUpdate()>0;
+		}
+
+	}
+
 }

@@ -29,4 +29,24 @@ public class UsinasController {
 			return new Retorno(ex.getMessage());
 		}
 	}
+	@CrossOrigin
+	@PatchMapping("/usinas")
+	public Retorno alterar(@RequestBody Usinas u) {
+		try {
+			return new Retorno(dao.alterar(u));
+		} catch (Exception ex) {
+			return new Retorno(ex.getMessage());
+		}
+	}
+
+	@CrossOrigin
+	@DeleteMapping("/usinas")
+	public Retorno deletar(@RequestBody Usinas u) {
+		try {
+			return new Retorno(dao.alterar(u));
+		} catch (Exception ex) {
+			return new Retorno(ex.getMessage());
+		}
+	}
+
 }
